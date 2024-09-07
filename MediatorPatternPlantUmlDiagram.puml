@@ -1,0 +1,47 @@
+@startuml
+class ColegaConcreto3 {
+~ void recibe()
+~ void envia()
+}
+
+class ColegaConcreto2 {
+~ void recibe()
+~ void envia()
+}
+
+class Main {
++ {static} void main(String[])
+}
+
+abstract class Colega {
++ Mediator mediator
++ void setMediator(Mediator)
+~ {abstract}void recibe()
+~ {abstract}void envia()
+}
+
+
+abstract class Mediator {
+~ {abstract}void registra(Colega)
+~ {abstract}void reenvia(Colega)
+}
+
+class MediatorConcrete {
+~ ArrayList<Colega> colegas
+~ void registra(Colega)
+~ void reenvia(Colega)
+}
+
+
+class ColegaConcreto1 {
+~ void recibe()
+~ void envia()
+}
+
+
+
+Colega <|-- ColegaConcreto3
+Colega <|-- ColegaConcreto2
+Mediator <|-- MediatorConcrete
+Colega <|-- ColegaConcreto1
+@enduml
